@@ -1,10 +1,24 @@
-FROM alpine:3.11.6 AS build
-RUN apk add --no-cache go
-WORKDIR /app
-COPY . .
-RUN CGO_ENABLED=1 GOOS=linux go build -o app -tags musl cw-deals-watcher
+# Build container
+FROM golang:1.17-bullseye AS build
 
-FROM alpine:3.11.6
+# Set build workdir
 WORKDIR /app
-COPY --from=build /app/app /app/app
-CMD ["/app/app"]
+
+# Copy app sources
+COPY . .
+
+# Build app
+RUN go build -o app .
+
+# ---
+# Production container
+FROM debian:bullseye-slim
+
+# Set app workdir
+WORKDIR /app
+
+# Copy binary
+COPY --from=build /app/app .
+
+# Run app
+CMD ["./app"]
