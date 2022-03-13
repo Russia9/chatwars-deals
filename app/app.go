@@ -1,8 +1,8 @@
 package app
 
 import (
-	"cw-deals-watcher/messages"
 	"encoding/json"
+	"gitea.russia9.dev/Russia9/chatwars-deals/messages"
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/rs/zerolog/log"
 	"gopkg.in/tucnak/telebot.v2"

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"cw-deals-watcher/app"
-	"cw-deals-watcher/utils"
+	"gitea.russia9.dev/Russia9/chatwars-deals/app"
+	"gitea.russia9.dev/Russia9/chatwars-deals/utils"
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"

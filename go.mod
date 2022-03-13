@@ -1,4 +1,4 @@
-module cw-deals-watcher
+module gitea.russia9.dev/Russia9/chatwars-deals
 
 go 1.14
 
