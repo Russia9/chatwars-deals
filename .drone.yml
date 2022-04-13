@@ -1,0 +1,37 @@
+kind: pipeline
+type: docker
+name: build
+
+steps:
+  - name: build
+    image: plugins/docker
+    settings:
+      registry: cr.selcloud.ru
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: cr.selcloud.ru/russia9/${DRONE_REPO_NAME}/${DRONE_COMMIT_BRANCH}
+      tags:
+        - latest
+        - ${DRONE_COMMIT_SHA}
+      cache_from:
+        - cr.selcloud.ru/russia9/${DRONE_REPO_NAME}/${DRONE_COMMIT_BRANCH}:latest
+
+#  - name: deploy
+#    image: appleboy/drone-ssh
+#    settings:
+#      host:
+#        from_secret: ssh_address
+#      username:
+#        from_secret: ssh_username
+#      key:
+#        from_secret: ssh_key
+#      port: 22
+#      script_stop: true
+#      script:
+#        - docker-compose -f /srv/cw3-offers/docker-compose.yml pull
+#        - docker-compose -f /srv/cw3-offers/docker-compose.yml up -d
+#    when:
+#      branch:
+#        - master
