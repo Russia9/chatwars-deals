@@ -7,7 +7,7 @@ WORKDIR /go/src/app
 COPY . .
 
 # Build app
-RUN go build -o app .
+RUN go build -o bin .
 
 # Run app
-CMD ["./app"]
+CMD ["./bin"]
