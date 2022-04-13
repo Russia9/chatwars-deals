@@ -1,24 +1,13 @@
-# Build container
-FROM golang:1.18-bullseye AS build
+FROM golang:1.18
 
-# Set build workdir
-WORKDIR /app
+# Set app workdir
+WORKDIR /go/src/app
 
-# Copy app sources
+# Copy application sources
 COPY . .
 
 # Build app
-RUN go build -o bin .
-
-# ---
-# Production container
-FROM debian:bullseye-slim
-
-# Set app workdir
-WORKDIR /app
-
-# Copy binary
-COPY --from=build /app/bin .
+RUN go build -o app .
 
 # Run app
-CMD ["./bin"]
+CMD ["./app"]
