@@ -1,5 +1,5 @@
 # Build container
-FROM golang:1.17-bullseye AS build
+FROM golang:1.18-bullseye AS build
 
 # Set build workdir
 WORKDIR /app
