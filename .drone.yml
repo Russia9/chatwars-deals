@@ -18,20 +18,20 @@ steps:
       cache_from:
         - cr.selcloud.ru/russia9/${DRONE_REPO_NAME}/${DRONE_COMMIT_BRANCH}:latest
 
-#  - name: deploy
-#    image: appleboy/drone-ssh
-#    settings:
-#      host:
-#        from_secret: ssh_address
-#      username:
-#        from_secret: ssh_username
-#      key:
-#        from_secret: ssh_key
-#      port: 22
-#      script_stop: true
-#      script:
-#        - docker-compose -f /srv/cw3-offers/docker-compose.yml pull
-#        - docker-compose -f /srv/cw3-offers/docker-compose.yml up -d
-#    when:
-#      branch:
-#        - master
+  - name: deploy
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        from_secret: ssh_address
+      username:
+        from_secret: ssh_username
+      key:
+        from_secret: ssh_key
+      port: 22
+      script_stop: true
+      script:
+        - docker-compose -f /srv/chatwars-deals/docker-compose.yml pull
+        - docker-compose -f /srv/chatwars-deals/docker-compose.yml up -d
+    when:
+      branch:
+        - master
