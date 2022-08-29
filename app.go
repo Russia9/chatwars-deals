@@ -44,7 +44,7 @@ func main() {
 	// Kafka consumer init
 	consumer, err := kafka.NewConsumer(&kafka.ConfigMap{
 		"bootstrap.servers": utils.GetEnv("KAFKA_ADDRESS", "localhost"),
-		"group.id":          "cw3",
+		"group.id":          "cw2-deals",
 		"auto.offset.reset": "latest",
 	})
 	if err != nil {
